@@ -6,21 +6,19 @@ namespace Statistics
 {
     public class StatsComputer
     {
+        readonly Stats result = new Stats();
 
-        public double average = double.NaN;
-        public double max = double.NaN;
-        public double min = double.NaN;
-
-        public void CalculateStatistics(List<double> numbers)
+        public Stats CalculateStatistics(List<double> numbers)
         {
 
             if (numbers.Any(double.IsNaN))
             {
-                return;
+                return result;
             }
-            average = numbers.Average();
-            max = numbers.Max();
-            min = numbers.Min();
+            result.average = numbers.Average();
+            result.max = numbers.Max();
+            result.min = numbers.Min();
+            return result;
         }
 
     }
