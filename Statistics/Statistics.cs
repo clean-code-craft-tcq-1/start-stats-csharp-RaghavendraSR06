@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,20 +6,20 @@ namespace Statistics
 {
     public class StatsComputer
     {
-        Stats result = new Stats();
+         public double average = double.NaN;
+        public double max = double.NaN;
+        public double min = double.NaN;
 
-        public Stats CalculateStatistics(List<double> numbers)
+        public void CalculateStatistics(List<double> numbers)
         {
-            _ = numbers ?? throw new ArgumentNullException();
-            if (numbers.Any(doubleValue => Double.IsNaN(doubleValue)))
-            {
-                return null;
-            }
-            result.average = numbers.Average();
-            result.min = numbers.Min();
-            result.max = numbers.Max();
-            return result;
-        }
 
+            if (numbers.Contains(double.NaN))
+            {
+                return;
+            }
+            average = numbers.Average();
+            max = numbers.Max();
+            min = numbers.Min();
+        }
     }
 }
